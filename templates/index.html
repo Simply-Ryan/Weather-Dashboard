@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include 'form.html' %}
+    {% include 'weather.html' %}
+
+    {% if forecast_data and 'city' in forecast_data %}
+        <h2>5-Day Forecast for {{ forecast_data['city']['name'] }}</h2>
+        <div class="forecast">
+            {% for day in forecast_data['list'] %}
+                {% if loop.index % 8 == 1 %}  <!-- Show only the forecast for 12:00 PM each day -->
+                    <div class="forecast-item">
+                        <h3>{{ day['dt_txt'][:10] }}</h3>
+                        <p>Temperature: {{ day['main']['temp'] }}°</p>
+                        <p>Weather: {{ day['weather'][0]['description'] }}</p>
+                        <p>Humidity: {{ day['main']['humidity'] }}%</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

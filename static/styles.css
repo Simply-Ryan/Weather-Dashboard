@@ -1,0 +1,129 @@
+/* styles.css */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General styling */
+body {
+    font-family: 'Roboto', sans-serif; /* Use Google Font */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light background color */
+    color: #333; /* Text color */
+}
+
+/* Header styling */
+header {
+    background-color: #007BFF; /* Light blue background */
+    color: white; /* White text */
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main content styling */
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white; /* White background for content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Form styling */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 22px); /* Full width minus padding */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    margin-bottom: 10px; /* Space below input */
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007BFF; /* Light blue background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Weather data styling */
+h2 {
+    margin: 20px 0 10px; /* Margin for headings */
+}
+
+p {
+    margin: 5px 0; /* Margin for paragraphs */
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px; /* Smaller font size */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    main {
+        width: 90%; /* More width on smaller screens */
+    }
+
+    input[type="text"], button {
+        width: 100%; /* Full width */
+    }
+}
+
+/* Dropdown styling */
+select {
+    padding: 10px; /* Padding for the dropdown */
+    width: calc(100% - 22px); /* Full width minus padding */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    margin-bottom: 10px; /* Space below dropdown */
+    background-color: white; /* White background for dropdown */
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23007BFF"><path d="M5.5 7l4.5 4.5L14.5 7h-9z"/></svg>'); /* Custom arrow */
+    background-repeat: no-repeat; /* Prevent repeating the background image */
+    background-position: right 10px center; /* Position the arrow */
+    background-size: 12px; /* Size of the arrow */
+}
+
+select:focus {
+    border-color: #007BFF; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow on focus */
+}
+
+.forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.forecast-item {
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    flex: 1 0 30%; /* Adjust to fit three items per row */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    text-align: center;
+}

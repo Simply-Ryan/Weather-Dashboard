@@ -1,0 +1,10 @@
+{% if error_message %}
+    <p style="color: red;">Error: {{ error_message }}</p>
+{% elif weather_data %}
+    <h2>Weather in {{ weather_data['name'] }}</h2>
+    <p>Temperature: {{ weather_data['main']['temp'] }}°</p>
+    <p>Weather: {{ weather_data['weather'][0]['description'] }}</p>
+    <p>Humidity: {{ weather_data['main']['humidity'] }}%</p>
+{% else %}
+    <p>Please enter a city name to get the weather.</p>
+{% endif %}

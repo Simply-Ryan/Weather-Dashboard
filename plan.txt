@@ -1,0 +1,67 @@
+Weather Dashboard
+
+Features:
+1. Real-Time Weather Data:
+   - Use OpenWeatherMap API to fetch current weather.
+   - Display temperature, wind speed, humidity, rain chance, etc.
+
+2. Weather Forecast:
+   - Show weather forecasts for up to 5-7 days.
+   - Include icons for different weather conditions (e.g., sunny, cloudy, rainy).
+
+3. Search by City:
+   - Allow users to input city names and fetch their weather data.
+   - Implement search suggestions or autocomplete for ease of use.
+
+4. Favorite Cities (Account Creation):
+   - Enable users to create accounts.
+   - Allow them to favorite certain cities and quickly access weather data.
+   - Store favorite cities in the database and tie them to the user account.
+
+5. Weather Details:
+   - Show additional details like:
+     - Date
+     - Min/Max Temperatures
+     - Humidity levels
+     - Rain or snow probability
+
+6. Dark Theme / Dynamic Theme:
+   - Add a dark mode toggle for user preference.
+   - Automatically change theme based on weather conditions:
+     - Rainy = dark/blue theme
+     - Sunny = bright/yellow theme
+     - Cloudy = neutral grey theme
+
+Additional Considerations:
+- User Authentication:
+  - Implement a login/signup system using Flask and an SQLite or SQLAlchemy database.
+
+- Data Caching:
+  - Cache weather data in SQLite to avoid frequent API requests for the same city within a short time period.
+
+- Responsive Design:
+  - Make sure the dashboard is mobile-friendly and adapts well to different screen sizes.
+
+- Error Handling:
+  - Handle cases where a city is not found, and show user-friendly error messages.
+
+Technologies & Tools:
+- Flask: Backend framework
+- Jinja: Templating engine for dynamic HTML rendering
+- SQLite: Database for storing user accounts and favorite cities
+- HTML/CSS: For the frontend design
+- JavaScript (optional): For adding interactivity like theme toggling
+- OpenWeatherMap API: Source for weather data
+
+File Structure:
+/weather-dashboard
+│
+├── app.py                    # Main Flask app with routes
+├── templates/
+│   └── index.html             # Jinja HTML templates
+├── static/
+│   ├── styles.css             # CSS for the dashboard
+│   └── script.js              # Optional JS for theme toggling
+├── weather.db                 # SQLite database
+├── requirements.txt           # List of dependencies
+└── plan.txt                   # Project plan
