@@ -4,18 +4,16 @@
     {% include 'form.html' %}
     {% include 'weather.html' %}
 
-    {% if forecast_data and 'city' in forecast_data %}
-        <h2>5-Day Forecast for {{ forecast_data['city']['name'] }}</h2>
+    {% if forecast_data and city_info %}
+        <h2>5-Day Forecast for {{ city_info.name }}, {{ city_info.country }}</h2>
         <div class="forecast">
-            {% for day in forecast_data['list'] %}
-                {% if loop.index % 8 == 1 %}  <!-- Show only the forecast for 12:00 PM each day -->
-                    <div class="forecast-item">
-                        <h3>{{ day['dt_txt'][:10] }}</h3>
-                        <p>Temperature: {{ day['main']['temp'] }}°</p>
-                        <p>Weather: {{ day['weather'][0]['description'] }}</p>
-                        <p>Humidity: {{ day['main']['humidity'] }}%</p>
-                    </div>
-                {% endif %}
+            {% for day in forecast_data %}
+                <div class="forecast-item">
+                    <h3>{{ day['day_of_week'] }}</h3>  <!-- Display day of the week -->
+                    <p>Average Temperature: {{ day['avg_temp'] }}°</p>  <!-- Rounded average temperature -->
+                    <p>Weather: {{ day['weather_desc'] }}</p>
+                    <p>Average Humidity: {{ day['avg_humidity'] }}%</p>
+                </div>
             {% endfor %}
         </div>
     {% endif %}
