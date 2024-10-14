@@ -1,5 +1,5 @@
 {% if error_message %}
-    <p style="color: red;">Error: {{ error_message }}</p>
+    <p style="color: red; font-weight: bold;">Error: {{ error_message }}</p>
 {% elif weather_data %}
     <h2>Weather in {{ weather_data['name'] }}</h2>
     <p>Temperature: {{ weather_data['main']['temp'] }}°</p>

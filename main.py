@@ -3,7 +3,7 @@ import requests
 from datetime import datetime
 from collections import defaultdict
 
-WEATHER_API_KEY = "fd0e6bd8dfbb84569e65f891339f8679"  # Replace with your actual API key
+WEATHER_API_KEY = "fd0e6bd8dfbb84569e65f891339f8679"
 WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather'
 FORECAST_API_URL = 'http://api.openweathermap.org/data/2.5/forecast'
 app = Flask(__name__)
@@ -51,7 +51,9 @@ def get_forecast(city, unit):
         for day, data in daily_data.items():
             avg_temp = round(sum(data['temps']) /
                              len(data['temps']))  # Rounded average temperature
-            avg_humidity = round(sum(data['humidities']) / len(data['humidities'])) # Rounded average humidity
+            avg_humidity = round(
+                sum(data['humidities']) /
+                len(data['humidities']))  # Rounded average humidity
             weather_desc = max(
                 set(data['weather_desc']),
                 key=data['weather_desc'].count)  # Most common description
@@ -80,15 +82,22 @@ def home():
         city = request.form.get('city')
         unit = request.form.get('unit')
         weather_data = get_weather(city, unit)
-        city_info, forecast_data = get_forecast(city, unit)
 
-        if "error" in weather_data:
-            error_message = weather_data["error"]
- 
+        try:
+            city_info, forecast_data = get_forecast(city, unit)
+        except:
+            error_message = "Data fetch failed. The city requested may not be registered in the weather database."
+            return render_template(
+                'index.html',
+                weather_data=weather_data,
+                forecast_data=forecast_data,
+                city_info=city_info,  # Pass city information
+                error_message=error_message)
+
         # Round temperatures and humidities
         weather_data['main']['temp'] = round(weather_data['main']['temp'])
-        weather_data['main']['humidity'] = round(weather_data['main']['humidity'])
-
+        weather_data['main']['humidity'] = round(
+            weather_data['main']['humidity'])
 
     return render_template(
         'index.html',
